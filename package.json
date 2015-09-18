@@ -1,6 +1,6 @@
 {
   "name": "assemble-unused-partials",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Check & output the unused assemble partials",
   "main": "index.js",
   "scripts": {
