@@ -9,6 +9,8 @@
 > Check & output the unused [assemble](http://assemble.io/) partials
 
 
+<img src="./screenshot.png" />
+
 ## Install
 ```
 $ npm i --save-dev assemble-unused-partials
