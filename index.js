@@ -120,6 +120,48 @@ module.exports = function (params, cb) {
   };
 
 
+  var getUnusedPartials = function (res, done) {
+    var partials = res[1].partials,
+      flattenPartialNames = flatten(res.map(function (item) {
+        return item.partialNames;
+      }));
+
+    var usedPartialNames = flattenPartialNames.filter(function (item, idx) {
+      return flattenPartialNames.indexOf(item) === idx;
+    });
+
+    filterUnusedPartials(partials, usedPartialNames, function (err, unused) {
+      if (!unused.length) {
+        done();
+        return;
+      }
+
+      Promise.all(unused.map(function (name) {
+        return new Promise(function (resolve, reject) {
+          getPartialPath(params, name, function (error, data) {
+            if (error) {
+              reject(error);
+              return;
+            }
+            resolve(data);
+          });
+        });
+      }))
+      .then(function (res) {
+        console.log();
+        console.log(chalk.yellow.bold(figures.pointer + ' Unused partials'));
+
+        res.forEach(function (partial) {
+          console.log(' ' + figures.warning + ' ' + partial);
+        });
+
+        done();
+      });
+
+    });
+  };
+
+
   Promise
     .all([
       getLayoutsAll,
@@ -127,35 +169,7 @@ module.exports = function (params, cb) {
       getPagesAll
     ])
     .then(function (res) {
-      var partials = res[1].partials,
-        flattenPartialNames = flatten(res.map(function (item) {
-          return item.partialNames;
-        }));
-
-      var usedPartialNames = flattenPartialNames.filter(function (item, idx) {
-        return flattenPartialNames.indexOf(item) === idx;
-      });
-
-      filterUnusedPartials(partials, usedPartialNames, function (err, unused) {
-        if (!unused.length) {
-          cb();
-          return;
-        }
-
-        console.log();
-        console.log(chalk.yellow.bold(figures.pointer + ' Unused partials'));
-
-        unused.forEach(function (name) {
-          getPartialPath(params, name, function (error, data) {
-            if (error) {
-              console.error(error);
-            }
-            console.log(' ' + figures.warning + ' ' + data);
-          });
-        });
-
-        cb();
-      });
+      getUnusedPartials(res, cb);
     });
 };
 
