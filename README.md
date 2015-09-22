@@ -12,12 +12,12 @@
 <img src="./screenshot.png" />
 
 ## Install
-```
+```sh
 $ npm i --save-dev assemble-unused-partials
 ```
 
 ## Register
-```
+```js
 assemble: {
   options: {
     plugins: ['assemble-unused-partials']
