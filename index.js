@@ -136,27 +136,28 @@ module.exports = function (params, cb) {
         return;
       }
 
-      Promise.all(unused.map(function (name) {
-        return new Promise(function (resolve, reject) {
-          getPartialPath(params, name, function (error, data) {
-            if (error) {
-              reject(error);
-              return;
-            }
-            resolve(data);
+      Promise
+        .all(unused.map(function (name) {
+          return new Promise(function (resolve, reject) {
+            getPartialPath(params, name, function (error, data) {
+              if (error) {
+                reject(error);
+                return;
+              }
+              resolve(data);
+            });
           });
-        });
-      }))
-      .then(function (res) {
-        console.log();
-        console.log(chalk.yellow.bold(figures.pointer + ' Unused partials'));
+        }))
+        .then(function (unusedPartials) {
+          console.log();
+          console.log(chalk.yellow.bold(figures.pointer + ' Unused partials'));
 
-        res.forEach(function (partial) {
-          console.log(' ' + figures.warning + ' ' + partial);
-        });
+          unusedPartials.forEach(function (partial) {
+            console.log(' ' + figures.warning + ' ' + partial);
+          });
 
-        done();
-      });
+          done();
+        });
 
     });
   };
