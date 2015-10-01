@@ -31,9 +31,9 @@
   "dependencies": {
     "chalk": "^1.1.1",
     "figures": "^1.4.0",
-    "find-assemble-partials": "0.0.4",
-    "get-assemble-layouts": "0.0.3",
-    "get-assemble-pages": "0.0.3",
+    "find-assemble-partials": "0.0.5",
+    "get-assemble-layouts": "0.0.4",
+    "get-assemble-pages": "0.0.4",
     "get-assemble-partial-name": "0.0.2",
     "get-assemble-partial-path": "0.0.3",
     "get-assemble-partials": "0.0.4",
