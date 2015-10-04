@@ -3,6 +3,7 @@ node_js:
   - 'iojs'
   - '0.10'
   - '0.12'
+  - '4'
 before_script:
   - npm install -g grunt-cli
 script: npm test
