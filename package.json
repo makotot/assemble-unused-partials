@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "lint": "./node_modules/eslint/bin/eslint.js index.js",
-    "test": "npm run lint && grunt build"
+    "test": "npm run lint && grunt build",
+    "bump": "./node_modules/.bin/release-it"
   },
   "author": "makotot",
   "repository": {
@@ -26,6 +27,7 @@
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-watch": "^0.6.1",
     "jit-grunt": "^0.9.1",
+    "release-it": "^2.3.1",
     "time-grunt": "^1.2.1"
   },
   "dependencies": {
