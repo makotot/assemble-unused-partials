@@ -38,7 +38,7 @@
     "get-assemble-pages": "0.0.4",
     "get-assemble-partial-name": "0.0.2",
     "get-assemble-partial-path": "0.0.3",
-    "get-assemble-partials": "0.0.4",
+    "get-assemble-partials": "^0.1.0",
     "promise": "^7.0.4"
   }
 }
