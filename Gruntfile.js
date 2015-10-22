@@ -22,14 +22,19 @@ module.exports = function (grunt) {
       options: {
         layoutdir: '<%= path.src %>/layouts',
         partials: [
-          '<%= path.src %>/partials/*.hbs',
-          '<%= path.src %>/sub-partials/*.hbs'
+          '<%= path.src %>/**/*.hbs'
         ],
         helpers: [
         ],
         plugins: [
           './index.js'
-        ]
+        ],
+        unusedPartials: {
+          excludes: [
+            '<%= path.src %>/partials/excludes.hbs',
+            '<%= path.src %>/partials/excludes/*.hbs'
+          ]
+        }
       },
       all: {
         options: {

@@ -18,6 +18,7 @@ function flatten (items) {
 
 
 module.exports = function (params, cb) {
+  var options = params.assemble.options.unusedPartials;
 
   var getLayoutsAll = new Promise(function (resolve, reject) {
     getLayouts(params, function (err, layouts) {
@@ -48,7 +49,7 @@ module.exports = function (params, cb) {
   });
 
   var getPartialsAll = new Promise(function (resolve, reject) {
-    getPartials(params, function (err, partials) {
+    getPartials(params, options.excludes, function (err, partials) {
       if (err) {
         reject(err);
       }
