@@ -25,6 +25,26 @@ assemble: {
 }
 ```
 
+## Options
+
+### excludes
+
+A list of glob pattern that you want to exclude.
+
+- type: `array`
+
+```js
+assemble: {
+  options: {
+    plugins: ['assemble-unused-partials']
+  },
+  unusedPartials: [
+    './src/partials/excludes/**/*.hbs',
+    ...
+  ]
+}
+```
+
 
 ## License
 
