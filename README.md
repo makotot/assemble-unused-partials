@@ -1,6 +1,6 @@
 # assemble-unused-partials
 
-[![npm version](https://img.shields.io/npm/v/assemble-unused-partials.svg?style=flat-square)](https://github.com/makotot/assemble-unused-partials)
+[![npm version](https://img.shields.io/npm/v/assemble-unused-partials.svg?style=flat-square)](https://www.npmjs.com/package/assemble-unused-partials)
 [![travis](http://img.shields.io/travis/makotot/assemble-unused-partials.svg?style=flat-square)](https://github.com/makotot/assemble-unused-partials)
 [![dependencies](http://img.shields.io/david/makotot/assemble-unused-partials.svg?style=flat-square)](https://github.com/makotot/assemble-unused-partials)
 [![devDependencies](http://img.shields.io/david/dev/makotot/assemble-unused-partials.svg?style=flat-square)](https://github.com/makotot/assemble-unused-partials)
@@ -38,10 +38,12 @@ assemble: {
   options: {
     plugins: ['assemble-unused-partials']
   },
-  unusedPartials: [
-    './src/partials/excludes/**/*.hbs',
-    ...
-  ]
+  unusedPartials: {
+    excludes: [
+      './src/partials/excludes/**/*.hbs',
+      ...
+    ]
+  }
 }
 ```
 
