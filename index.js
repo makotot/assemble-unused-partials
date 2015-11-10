@@ -18,7 +18,7 @@ function flatten (items) {
 
 
 module.exports = function (params, cb) {
-  var options = params.assemble.options.unusedPartials;
+  var options = params.assemble.options.unusedPartials || {};
 
   var getLayoutsAll = new Promise(function (resolve, reject) {
     getLayouts(params, function (err, layouts) {
